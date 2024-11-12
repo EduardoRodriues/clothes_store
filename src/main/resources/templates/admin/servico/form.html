@@ -89,15 +89,26 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12"> 
+                                        <div class="form-group">
+                                            <label for="tipoDeAviamento">Tipo De Aviamento</label>
+                                            <input type="text" class="form-control" th:field="*{tipoDeAviamento}">
+                                            <ul>
+                                                <li class="text-danger" th:each="erro : ${#fields.errors('tipoDeAviamento')}" th:text="${erro}"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                             <div class="row">
                                 <div class="col-md-6 col-sm-12"> 
                                     <div class="form-group">
                                         <label for="icon">Tipo De Aviamento</label>
-                                        <select class="form-control" th:field="*{tipoDeAviamento}">
-                                            <option th:each="tipoDeAviamento : ${icones}" th:text="${tipoDeAviamento.nome}" th:value="${tipoDeAviamento}"></option>
+                                        <select class="form-control" th:field="*{tamanho}">
+                                            <option th:each="tamanho : ${tamanhos}" th:text="${tamanho.nome}" th:value="${tipoDeAviamento}"></option>
                                         </select>
                                         <ul>
-                                            <li class="text-danger" th:each="erro : ${#fields.errors('tipoDeAviamento')}" th:text="${erro}"></li>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('tamanho')}" th:text="${erro}"></li>
                                         </ul>
                                     </div>
                                 </div>
