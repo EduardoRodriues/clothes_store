@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html th:replace="~{adminlte3 :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+<head>
+   <title>Formulário de Serviços</title>
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="col-mb-6 col-sm-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">Formulário de Serviço</div>
+                    </div>
+                    <div class="card-body">
+                         
+                        <form method="POST" th:object="${form}"> 
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="categoria">Categoria</label>
+                                        <input type="text" class="form-control" th:field="*{categoria}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('categoria')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="produto">Produto</label>
+                                        <input type="text" class="form-control" th:field="*{produto}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('produto')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="valor">Valor</label>
+                                        <input type="number" class="form-control" th:field="*{valor}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('valor')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" th:field="*{email}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('email')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="tecido">Tecido</label>
+                                        <input type="text" class="form-control" th:field="*{tecido}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('tecido')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="cor">Cor</label>
+                                        <input type="text" class="form-control" th:field="*{cor}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('cor')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="marca">Marca</label>
+                                        <input type="text" class="form-control" th:field="*{marca}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('marca')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="icon">Tipo De Aviamento</label>
+                                        <select class="form-control" th:field="*{tipoDeAviamento}">
+                                            <option th:each="tipoDeAviamento : ${icones}" th:text="${tipoDeAviamento.nome}" th:value="${tipoDeAviamento}"></option>
+                                        </select>
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('tipoDeAviamento')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <th:block th:fragment="scripts">
+        <script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
+        <script>
+            $(document).ready(function() {
+                $('.money').mask("#.##0,00", {reverse: true});
+            })
+        </script>
+    </th:block> 
+</body>
+</html>
