@@ -1,70 +1,50 @@
-package br.com.carlos.clothes_store.core.models;
+package br.com.carlos.clothes_store.web.dtos;
 
 import java.math.BigDecimal;
-
 import br.com.carlos.clothes_store.core.enums.Tamanho;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import io.micrometer.common.lang.NonNull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ClothesServico {
+public class ClothesServicoForm {
 
-    @Id
-    @ToString.Include
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(name = "categoria", nullable = false)
+	@Size(min = 20, max = 50)
+	@NonNull
     private String categoria;
 
-    @Column(name = "produto", nullable = false)
+	@NonNull
     private String produto;
 
-    @Column(name = "valor", nullable = false)
+	@NonNull
+	@PositiveOrZero
     private BigDecimal valor;
-
-    @Column(name = "email", nullable = false)
+    
+	@Email
+	@NonNull
     private String email;
 
-    @Column(name = "tecido", nullable = false)
+	@NonNull
     private String tecido;
 
-    @Column(name = "cor", nullable = false)
+	@NonNull
     private String cor;
 
-    @Column(name = "marca", nullable = false)
+	@NonNull
     private String marca;
 
-    @Column(name = "tipo_de_aviamento", nullable = false)
+	@NonNull
     private String tipoDeAviamento;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+	@NonNull
     private Tamanho tamanho;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getCategoria() {
 		return categoria;
@@ -128,6 +108,14 @@ public class ClothesServico {
 
 	public void setTamanho(Tamanho tamanho) {
 		this.tamanho = tamanho;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
 }
