@@ -2,6 +2,7 @@ package br.com.carlos.clothes_store.web.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.carlos.clothes_store.core.exceptions.ServicoNaoEncontradoException;
@@ -13,8 +14,10 @@ import br.com.carlos.clothes_store.web.mappers.WebClothesMapper;
 @Service
 public class WebClothesService {
     
+    @Autowired
     private WebClothesMapper mapper;
 
+    @Autowired
     private ClothesRepository repository;
 
     public List<ClothesServico> mostrarTodos() {
