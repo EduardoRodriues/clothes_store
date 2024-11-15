@@ -5,8 +5,8 @@
 </head>
 <body>
     <main>
-        <div class="row">
-            <div class="col-mb-6 col-sm-12">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <div class="card card-primary">
                     <div class="card-header">
                         <div class="card-title">Formulário de Serviço</div>
@@ -88,24 +88,23 @@
                                         </ul>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12"> 
-                                        <div class="form-group">
-                                            <label for="tipoDeAviamento">Tipo De Aviamento</label>
-                                            <input type="text" class="form-control" th:field="*{tipoDeAviamento}">
-                                            <ul>
-                                                <li class="text-danger" th:each="erro : ${#fields.errors('tipoDeAviamento')}" th:text="${erro}"></li>
-                                            </ul>
-                                        </div>
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="tipoDeAviamento">Tipo De Aviamento</label>
+                                        <input type="text" class="form-control" th:field="*{tipoDeAviamento}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('tipoDeAviamento')}" th:text="${erro}"></li>
+                                        </ul>
                                     </div>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-md-6 col-sm-12"> 
                                     <div class="form-group">
-                                        <label for="icon">Tipo De Aviamento</label>
+                                        <label for="tamanho">Tamanho</label>
                                         <select class="form-control" th:field="*{tamanho}">
-                                            <option th:each="tamanho : ${tamanhos}" th:text="${tamanho.nome}" th:value="${tipoDeAviamento}"></option>
+                                            <option th:each="tamanho : ${tamanhos}" th:text="${tamanho}" th:value="${tamanho}"></option>
                                         </select>
                                         <ul>
                                             <li class="text-danger" th:each="erro : ${#fields.errors('tamanho')}" th:text="${erro}"></li>
@@ -114,7 +113,10 @@
                                 </div>
                             </div> 
 
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+                            </div>
+
                         </form>
 
                     </div>
