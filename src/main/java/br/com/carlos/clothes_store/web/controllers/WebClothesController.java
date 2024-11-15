@@ -18,7 +18,7 @@ import br.com.carlos.clothes_store.web.services.WebClothesService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("admin/servico")
+@RequestMapping("/admin/servico")
 public class WebClothesController {
     
     @Autowired
@@ -56,15 +56,16 @@ public class WebClothesController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar() {
+    public ModelAndView editar(@PathVariable Long id) {
         var modelAndView = new ModelAndView("admin/servico/form");
-        modelAndView.addObject("form", new ClothesServicoForm());
+
+        modelAndView.addObject("form", service.buscarPorId(id));
 
         return modelAndView;
     }
 
     @PostMapping("/{id}/editar")
-    public String cadastrar(@Valid @ModelAttribute("form") ClothesServicoForm form, 
+    public String editar(@Valid @ModelAttribute("form") ClothesServicoForm form, 
     @PathVariable Long id,
      BindingResult result,
       RedirectAttributes attrs) {
@@ -85,7 +86,7 @@ public class WebClothesController {
         service.excluir(id);
         attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço excluido com sucesso"));
 
-        return "redirect:admin/servico";
+        return "redirect:/admin/servico";
     }
 
     @ModelAttribute("tamanhos")
