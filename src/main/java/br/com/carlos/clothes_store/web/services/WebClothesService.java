@@ -33,7 +33,7 @@ public class WebClothesService {
 
     public ClothesServico buscarPorId(Long id) {
 
-        var mensagem = String.format("Serviço não foi encontrado", id);
+        var mensagem = String.format("Serviço com ID %d não foi encontrado", id);
 
         return repository.findById(id)
         .orElseThrow(() -> new ServicoNaoEncontradoException(mensagem));
