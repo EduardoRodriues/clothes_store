@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class ClothesServicoForm {
 
 
-	@Size(min = 20, max = 50)
+	@Size(min = 3, max = 50)
 	@NonNull
     private String categoria;
 
