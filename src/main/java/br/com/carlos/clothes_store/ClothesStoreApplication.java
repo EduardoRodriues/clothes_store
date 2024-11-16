@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
+/*@ComponentScan(basePackages = {"target.generated-sources.mappers"})*/
 public class ClothesStoreApplication {
 
 	public static void main(String[] args) {
