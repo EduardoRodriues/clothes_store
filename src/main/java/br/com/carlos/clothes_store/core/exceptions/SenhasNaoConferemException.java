@@ -2,11 +2,9 @@ package br.com.carlos.clothes_store.core.exceptions;
 
 import org.springframework.validation.FieldError;
 
-import jakarta.persistence.EntityNotFoundException;
-
-public class SenhasNaoConferemException extends EntityNotFoundException{
+public class SenhasNaoConferemException extends ValidacaoException{
 
     public SenhasNaoConferemException(String mensagem, FieldError fieldError) {
-        super(mensagem);
+        super(mensagem, fieldError);
     }
 }
