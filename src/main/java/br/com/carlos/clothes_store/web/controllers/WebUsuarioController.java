@@ -49,15 +49,15 @@ public class WebUsuarioController {
     RedirectAttributes attrs) {
 
         if(result.hasErrors()) {
-            return "admin/usuarios/formCadastro";
+            return "admin/usuario/formCadastro";
         }
 
         try{
             service.cadastrar(form);
-            attrs.addFlashAttribute("alert", new FlashMessage("alert-succes", "usuario cadastrado com sucesso!"));
+            attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "usuario cadastrado com sucesso!"));
         } catch(ValidacaoException e) {
             result.addError(e.getFieldError());
-            return "admin/usuarios/formCadastro";
+            return "admin/usuario/formCadastro";
         }
 
         return "redirect:/admin/usuarios";
@@ -79,15 +79,15 @@ public class WebUsuarioController {
     RedirectAttributes attrs) {
 
         if(result.hasErrors()) {
-            return "admin/usuarios/formEdicao";
+            return "admin/usuario/formEdicao";
         }
 
         try{
             service.editar(id, form);
-            attrs.addFlashAttribute("alert", new FlashMessage("alert-succes", "usuario editado com sucesso!"));
+            attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "usuario editado com sucesso!"));
         } catch(ValidacaoException e) {
             result.addError(e.getFieldError());
-            return "admin/usuarios/formEdicao";
+            return "admin/usuario/formEdicao";
         }
 
         return "redirect:/admin/usuarios";
@@ -97,7 +97,7 @@ public class WebUsuarioController {
     public String excluir(@PathVariable Long id, RedirectAttributes attrs) {
 
         service.excluir(id);
-        attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço excluido com sucesso"));
+        attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço excluido com sucesso!"));
 
         return "redirect:/admin/usuarios";
     }

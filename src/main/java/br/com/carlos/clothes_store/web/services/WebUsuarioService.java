@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.FieldError;
+
+import br.com.carlos.clothes_store.core.enums.TipoUsuario;
 import br.com.carlos.clothes_store.core.exceptions.SenhasNaoConferemException;
 import br.com.carlos.clothes_store.core.exceptions.UsuarioNaoEncontradoException;
 import br.com.carlos.clothes_store.core.exceptions.UsuarioJaCadastradoException;
@@ -40,7 +42,7 @@ public class WebUsuarioService {
             var mensagem = "os campos não conferem";
 
             var fieldError = new FieldError(form.getClass().getName(),
-             "os campos não coneferm",
+             "confirmacaoSenha",
               form.getConfirmacaoSenha(),
                false,
                 null,
@@ -51,6 +53,7 @@ public class WebUsuarioService {
         }
 
         var model = mapper.toModel(form);
+        model.setTipoUsuario(TipoUsuario.ADMIN);
         validarCamposUnicos(model);
 
         return repository.save(model);

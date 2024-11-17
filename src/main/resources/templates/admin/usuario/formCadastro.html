@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body">
                          
-                        <form method="POST" th:object="${cadastroForm}"> 
+                        <form method="POST" th:object="${formCadastro}"> 
 
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
@@ -48,10 +48,10 @@
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label for="confimacaoSenha">Confirmação Senha</label>
-                                        <input type="text" class="form-control" th:field="*{confimacaoSenha}">
+                                        <label for="confirmacaoSenha">Confirmação Senha</label>
+                                        <input type="text" class="form-control" th:field="*{confirmacaoSenha}">
                                         <ul>
-                                            <li class="text-danger" th:each="erro : ${#fields.errors('confimacaoSenha')}" th:text="${erro}"></li>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('confirmacaoSenha')}" th:text="${erro}"></li>
                                         </ul>
                                     </div> 
                                 </div>
