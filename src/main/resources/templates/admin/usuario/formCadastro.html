@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html th:replace="~{adminlte3 :: layout (~{::title}, ~{::main}, _, _)}">
+<head>
+   <title>Formulário de Cadastro</title>
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="col-mb-6 col-sm-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">Formulário de Cadastro</div>
+                    </div>
+                    <div class="card-body">
+                         
+                        <form method="POST" th:object="${cadastroForm}"> 
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" class="form-control" th:field="*{nome}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('nome')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" th:field="*{email}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('email')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12"> 
+                                    <div class="form-group">
+                                        <label for="senha">Senha</label>
+                                        <input type="text" class="form-control" th:field="*{senha}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('senha')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="confimacaoSenha">Confirmação Senha</label>
+                                        <input type="text" class="form-control" th:field="*{confimacaoSenha}">
+                                        <ul>
+                                            <li class="text-danger" th:each="erro : ${#fields.errors('confimacaoSenha')}" th:text="${erro}"></li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
