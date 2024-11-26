@@ -1,7 +1,7 @@
 package br.com.carlos.clothes_store.web.dtos;
 
-import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AlterarSenhaForm {
     
-    @NonNull
+    @NotNull
     @NotEmpty
     private String senhaAntiga;
 
-    @NonNull
+    @NotNull
     @NotEmpty
-    private String senha;
+    private String senhaNova;
 
-    @NonNull
+    @NotNull
     @NotEmpty
     private String confirmacaoSenha;
 
@@ -31,13 +31,6 @@ public class AlterarSenhaForm {
 		this.senhaAntiga = senhaAntiga;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	public String getConfirmacaoSenha() {
 		return confirmacaoSenha;
@@ -45,5 +38,13 @@ public class AlterarSenhaForm {
 
 	public void setConfirmacaoSenha(String confirmacaoSenha) {
 		this.confirmacaoSenha = confirmacaoSenha;
+	}
+
+	public String getSenhaNova() {
+		return senhaNova;
+	}
+
+	public void setSenhaNova(String senhaNova) {
+		this.senhaNova = senhaNova;
 	}
 }

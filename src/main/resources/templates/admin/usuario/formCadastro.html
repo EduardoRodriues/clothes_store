@@ -41,7 +41,7 @@
                                 <div class="col-md-6 col-sm-12"> 
                                     <div class="form-group">
                                         <label for="senha">Senha</label>
-                                        <input type="text" class="form-control" th:field="*{senha}">
+                                        <input type="password" class="form-control" th:field="*{senha}">
                                         <ul>
                                             <li class="text-danger" th:each="erro : ${#fields.errors('senha')}" th:text="${erro}"></li>
                                         </ul>
@@ -50,7 +50,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="confirmacaoSenha">Confirmação Senha</label>
-                                        <input type="text" class="form-control" th:field="*{confirmacaoSenha}">
+                                        <input type="password" class="form-control" th:field="*{confirmacaoSenha}">
                                         <ul>
                                             <li class="text-danger" th:each="erro : ${#fields.errors('confirmacaoSenha')}" th:text="${erro}"></li>
                                         </ul>

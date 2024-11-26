@@ -1,6 +1,8 @@
 package br.com.carlos.clothes_store.web.dtos;
 
 import java.math.BigDecimal;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 import br.com.carlos.clothes_store.core.enums.Tamanho;
 import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.Email;
@@ -25,6 +27,7 @@ public class ClothesServicoForm {
 
 	@NonNull
 	@PositiveOrZero
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
     private BigDecimal valor;
     
 	@Email

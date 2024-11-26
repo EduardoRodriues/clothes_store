@@ -106,7 +106,7 @@ public class WebUsuarioController {
     }
 
     @GetMapping("/alterar-senha")
-    public ModelAndView alterarSenha() {
+    public ModelAndView alterarSenhaCon() {
 
         var modelAndView = new ModelAndView("admin/usuario/alterarSenha");
         modelAndView.addObject("alterarSenhaForm", new AlterarSenhaForm());
@@ -115,13 +115,13 @@ public class WebUsuarioController {
     }
 
     @PostMapping("/alterar-senha")
-    public String editar(@Valid @ModelAttribute("alterarSenhaForm") AlterarSenhaForm form,
+    public String alterarSenhaCon(@Valid @ModelAttribute("alterarSenhaForm") AlterarSenhaForm form,
     BindingResult result,
     RedirectAttributes attrs,
     Principal principal) {
 
         if(result.hasErrors()) {
-            return "admin/usuario/alterar-senha";
+            return "admin/usuario/alterarSenha";
         }
 
         try{
@@ -129,7 +129,7 @@ public class WebUsuarioController {
             attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "senha alterada com sucesso!"));
         } catch(ValidacaoException e) {
             result.addError(e.getFieldError());
-            return "admin/usuario/alterar-senha";
+            return "admin/usuario/alterarSenha";
         }
 
         return "redirect:/admin/usuarios";

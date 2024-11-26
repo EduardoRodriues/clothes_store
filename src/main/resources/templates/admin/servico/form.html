@@ -41,7 +41,7 @@
                                 <div class="col-md-6 col-sm-12"> 
                                     <div class="form-group">
                                         <label for="valor">Valor</label>
-                                        <input type="number" class="form-control" th:field="*{valor}">
+                                        <input type="text" class="form-control  money" th:field="*{valor}">
                                         <ul>
                                             <li class="text-danger" th:each="erro : ${#fields.errors('valor')}" th:text="${erro}"></li>
                                         </ul>

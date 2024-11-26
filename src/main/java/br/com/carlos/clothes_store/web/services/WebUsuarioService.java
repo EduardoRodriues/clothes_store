@@ -106,26 +106,9 @@ public class WebUsuarioService {
 
         var usuario = buscarPorEmail(email);
 
-        var senha = form.getSenha();
-        var confirmacaoSenha = form.getConfirmacaoSenha();
-
         var senhaAtual = usuario.getSenha();
-        var senhaAntiga = form.getSenha();
+        var senhaAntiga = form.getSenhaAntiga();
 
-        if(!senha.equals(confirmacaoSenha)) {
-
-            var mensagem = "os campos não conferem";
-
-            var fieldError = new FieldError(form.getClass().getName(),
-             "confirmacaoSenha",
-              form.getConfirmacaoSenha(),
-               false,
-                null,
-                 null,
-                  mensagem);
-
-                  throw new SenhasNaoConferemException(mensagem, fieldError);
-        }
 
         if(!passwordEncoder.matches(senhaAntiga, senhaAtual)) {
 
@@ -142,7 +125,26 @@ public class WebUsuarioService {
                   throw new SenhaIncorretaException(mensagem, fieldError);
         }
 
-        var novaSenhaHash = passwordEncoder.encode(senha);
+        var senhaNova = form.getSenhaNova();
+        var confirmacaoSenha = form.getConfirmacaoSenha();
+        
+
+        if(!senhaNova.equals(confirmacaoSenha)) {
+
+            var mensagem = "os campos não conferem";
+
+            var fieldError = new FieldError(form.getClass().getName(),
+             "confirmacaoSenha",
+              form.getConfirmacaoSenha(),
+               false,
+                null,
+                 null,
+                  mensagem);
+
+                  throw new SenhasNaoConferemException(mensagem, fieldError);
+        }
+
+        var novaSenhaHash = passwordEncoder.encode(senhaNova);
         usuario.setSenha(novaSenhaHash);
         
         repository.save(usuario);
