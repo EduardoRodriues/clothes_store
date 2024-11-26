@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html th:replace="~{adminlte3 :: layout (~{::title}, ~{::main}, _, _)}">
+<head>
+    <title>Lista de Serviços</title>
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Lista de Serviços</div>
+                        <div class="card-tools">
+                            <a th:href="@{/admin/servico/cadastrar}" class="btn btn-sm btn-success">Novo Serviço</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Categoria</th>
+                                    <th>Produto</th>
+                                    <th>Valor</th>
+                                    <th>Marca</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each=" ClothesServico: ${lista}">
+                                    <td th:text="${ClothesServico.id}"></td>
+                                    <td th:text="${ClothesServico.categoria}"></td>
+                                    <td th:text="${ClothesServico.produto}"></td>
+                                    <td th:text="${ClothesServico.valor}"></td>
+                                    <td th:text="${ClothesServico.marca}"></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" 
+                                        th:href="@{/admin/servico/{id}/editar (id=${ClothesServico.id})}">Editar</a>
+                                        <a class="btn btn-sm btn-danger"
+                                        th:href="@{/admin/servico/{id}/excluir (id=${ClothesServico.id})}"
+                                        onclick="return confirm ('Tem certeza que deseja excluir?')"
+                                        >Excluir</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
