@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 public class AlterarSenhaForm {
     
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "o campo deve ser preenchido")
     private String senhaAntiga;
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "o campo deve ser preenchido")
     private String senhaNova;
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "o campo deve ser preenchido")
     private String confirmacaoSenha;
 
 	public String getSenhaAntiga() {
