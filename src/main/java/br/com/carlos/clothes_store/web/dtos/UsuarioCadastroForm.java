@@ -1,7 +1,8 @@
 package br.com.carlos.clothes_store.web.dtos;
 
-import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,18 +13,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UsuarioCadastroForm {
 
-    @Size(min = 3, max = 50)
-    @NonNull
+    @Size(min = 3, max = 50, message = "campo deve conter de 3 a 50 caracteres")
+    @NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String nome;
 
-    @NonNull
-    @Email
+    @NotNull
+    @Email(message = "o campo deve ser preenchido com um email")
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String email;
 
-    @NonNull
+    @NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String senha;
 
-    @NonNull
+    @NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String confirmacaoSenha;
 
 	public String getNome() {

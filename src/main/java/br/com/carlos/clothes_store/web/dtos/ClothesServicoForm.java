@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 import br.com.carlos.clothes_store.core.enums.Tamanho;
-import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -18,35 +19,41 @@ import lombok.NoArgsConstructor;
 public class ClothesServicoForm {
 
 
-	@Size(min = 3, max = 50)
-	@NonNull
+	@Size(min = 3, max = 50, message = "campo deve conter de 3 a 50 caracteres")
+	@NotNull
     private String categoria;
 
-	@NonNull
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String produto;
 
-	@NonNull
+	@NotNull(message = "o campo deve ser preenchido")
 	@PositiveOrZero
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
     private BigDecimal valor;
     
-	@Email
-	@NonNull
+	@Email(message = "o campo deve ser preenchido com um email")
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String email;
 
-	@NonNull
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String tecido;
 
-	@NonNull
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String cor;
 
-	@NonNull
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String marca;
 
-	@NonNull
+	@NotNull
+	@NotEmpty(message = "o campo deve ser preenchido")
     private String tipoDeAviamento;
 
-	@NonNull
+	@NotNull
     private Tamanho tamanho;
 
 	public String getCategoria() {
